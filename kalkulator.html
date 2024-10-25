@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2d3436;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            width: 320px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #2f3640;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        #result {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 20px;
+            border: none;
+            background-color: #222f3e;
+            color: #ffffff;
+            font-size: 24px;
+            text-align: right;
+            padding: 2px;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button-grid input[type="button"] {
+            width: 100%;
+            height: 60px;
+            font-size: 22px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #4b6584;
+            color: #ffffff;
+            transition: background-color 0.3s;
+        }
+        .button-grid input[type="button"]:hover {
+            background-color: #778ca3;
+        }
+        .button-operator {
+            background-color: #e84118;
+        }
+        .button-operator:hover {
+            background-color: #ff6b6b;
+        }
+        .button-clear {
+            background-color: #f39c12;
+        }
+        .button-clear:hover {
+            background-color: #feca57;
+        }
+        .button-delete {
+            background-color: #a55eea;
+        }
+        .button-delete:hover {
+            background-color: #b084f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" disabled>
+        <div class="button-grid">
+            <input type="button" value="1" onclick="addToResult('1')">
+            <input type="button" value="2" onclick="addToResult('2')">
+            <input type="button" value="3" onclick="addToResult('3')">
+            <input type="button" value="+" class="button-operator" onclick="addToResult('+')">
+            
+            <input type="button" value="4" onclick="addToResult('4')">
+            <input type="button" value="5" onclick="addToResult('5')">
+            <input type="button" value="6" onclick="addToResult('6')">
+            <input type="button" value="-" class="button-operator" onclick="addToResult('-')">
+            
+            <input type="button" value="7" onclick="addToResult('7')">
+            <input type="button" value="8" onclick="addToResult('8')">
+            <input type="button" value="9" onclick="addToResult('9')">
+            <input type="button" value="*" class="button-operator" onclick="addToResult('*')">
+            
+            <input type="button" value="C" class="button-clear" onclick="clearResult()">
+            <input type="button" value="0" onclick="addToResult('0')">
+            <input type="button" value="=" class="button-operator" onclick="calculateResult()">
+            <input type="button" value="/" class="button-operator" onclick="addToResult('/')">
+
+            <input type="button" value="Hapus" class="button-delete" onclick="deleteLast()">
+        </div>
+    </div>
+
+    <script>
+        function addToResult(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById('result').value = eval(document.getElementById('result').value);
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+            }
+        }
+
+        function deleteLast() {
+            let currentValue = document.getElementById('result').value;
+            document.getElementById('result').value = currentValue.slice(0, -1);
+        }
+    </script>
+</body>
+</html>

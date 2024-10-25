@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dasbor Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Panel Admin</h2>
+    <ul>
+      <li><a href="#" id="dashboardBtn"><i class="icon">&#128200;</i> Dasbor</a></li>
+      <li><a href="#" id="usersBtn"><i class="icon">&#128101;</i> Pengguna</a></li>
+      <li><a href="#" id="settingsBtn"><i class="icon">&#9881;</i> Pengaturan</a></li>
+      <li><a href="#" id="reportsBtn"><i class="icon">&#128202;</i> Laporan</a></li>
+      <li><a href="#" id="financialBtn"><i class="icon">&#128176;</i> Keuangan</a></li>
+      <li><a href="#" id="analyticsBtn"><i class="icon">&#128293;</i> Analitik</a></li>
+    </ul>
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="main-content">
+
+    <!-- Placeholder untuk konten dinamis -->
+    <div id="content">
+      <!-- Ini adalah konten default (Dasbor) -->
+      <h1>Statistik Dasbor</h1>
+      
+      <!-- Bagian Kartu -->
+      <div class="cards">
+        <div class="card">
+          <h3>Total Pengguna</h3>
+          <p>1,245</p>
+        </div>
+        <div class="card">
+          <h3>Pendaftaran Baru</h3>
+          <p>320</p>
+        </div>
+        <div class="card">
+          <h3>Pendapatan</h3>
+          <p>$12,540</p>
+        </div>
+        <div class="card">
+          <h3>Sesi Aktif</h3>
+          <p>850</p>
+        </div>
+      </div>
+
+      <div class="user-form-container">
+        <h2>Tambah / Edit Pengguna</h2>
+        <form id="userForm">
+          <label for="userName">Nama</label>
+          <input type="text" id="userName" name="userName" placeholder="Masukkan nama pengguna" required>
+          
+          <label for="userEmail">Email</label>
+          <input type="email" id="userEmail" name="userEmail" placeholder="Masukkan email pengguna" required>
+          
+          <label for="userRole">Peran</label>
+          <select id="userRole" name="userRole">
+            <option value="admin">Admin</option>
+            <option value="user">Pengguna</option>
+            <option value="manager">Manajer</option>
+          </select>
+          
+          <label for="userStatus">Status</label>
+          <select id="userStatus" name="userStatus">
+            <option value="active">Aktif</option>
+            <option value="inactive">Tidak Aktif</option>
+          </select>
+      
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+      
+
+      <!-- Bagian Grafik -->
+      <div class="stats">
+        <canvas id="myChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
