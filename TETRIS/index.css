@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    text-align: center;
+}
+
+#wrapper {
+    display: inline-block;
+    margin: 20px;
+}
+
+#left-div {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20 20 20;
+    padding: 20;
+    border: solid 1px white;
+    width: 286px;
+    height: 572.325px;
+}
+
+#logo {
+    width: 160px;
+    margin-bottom: 15px;
+}
+
+#game-container {
+    position: relative;
+    display: inline-block;
+}
+
+#background {
+    z-index: -1;
+}
+
+#game-canvas {
+    position: absolute;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#start-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #4CAF50;  /* Warna hijau */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#start-button:hover {
+    background-color: #45a049;  /* Warna hijau gelap saat hover */
+    transform: scale(1.05);  /* Efek pembesaran sedikit saat hover */
+}
+
+#start-button:active {
+    background-color: #388e3c;  /* Warna hijau lebih gelap saat diklik */
+    transform: scale(1);  /* Mengembalikan ukuran saat diklik */
+}
+
+#start-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px rgba(72, 201, 176, 0.8);  /* Efek fokus dengan outline hijau */
+}
+
+#score-div,
+#lines-div {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    font-family: "Lucida Console", "Courier New", monospace;
+    text-align: left;
+    margin: 15 0;
+}
