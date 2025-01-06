@@ -101,7 +101,39 @@
                 transform: translateY(0);
             }
         }
+          /* Styling Google Maps */
+          .google-maps {
+        margin: 50px auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column; /* Makes the content stack vertically */
+        justify-content: center; /* Centers the content horizontally */
+        align-items: center; /* Centers the content vertically */
+    }
+
+    .google-maps h2 {
+        color: #64f4ab;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .google-maps p {
+        color: white;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .google-maps iframe {
+        border: 5px solid #64f4ab;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 800px; /* Optional: Limit the iframe width */
+        height: 400px; /* Set the iframe height */
+        margin-bottom: 40px;
+    }
+        
     </style>
+    
 
     <title>Portofolio Rendy Alamsyah Putra</title>
 </head>
@@ -128,7 +160,22 @@
         </div>
     </nav>
     
+    <!-- Dropdown Filter -->
+    <div style="text-align: center; margin: 20px;">
+        <select id="categoryFilter" style="padding: 10px; border-radius: 5px;">
+            <option value="all">Semua</option>
+            <option value="tentang-saya">Tentang Saya</option>
+            <option value="tugas-tugas">Tugas-Tugas</option>
+            <option value="sertifikat">Sertifikat</option>
+            <option value="quotes">Quotes</option>
+            <option value="maps">Maps</option>
+
+        </select>
+    </div>
+    
+
     <!-- header start -->
+    <div class="content-section" data-category="tentang-saya">
     <div class="header-section">
         <div class="left-section">
             <!-- <img class="animated-img"                src="https://demo.phlox.pro/freelancer/wp-content/uploads/sites/272/2021/02/hero-img.png" alt="Header Image"> -->
@@ -237,13 +284,15 @@
                 </div>
             </div>
         </div>
+    </div>
+
     </section>
     
     
 
     <!-- skills details section  -->
 
-
+    <div class="container skillsdelt" data-category="tugas-tugas">
     <div class="container skillsdelt mx-auto pt-16">
         <div class="flex flex-wrap">
             <div class="w-full lg:w-1/2" id="leftSection">
@@ -567,8 +616,10 @@
             <span class="text">Tugas Selesai</span>
         </div>
     </div>
+</div>
 
 <!-- Bagian Sertifikat -->
+<div class="container skillsdelt" data-category="sertifikat">
 <div class="container skillsdelt mt-20 pt-16" id="sertifikat-section">
     <div class="flex flex-wrap">
 
@@ -690,10 +741,11 @@
 
     </div>
 </div>
+</div>
 
 
     <!-- slider  section  -->
-
+    <div class="container-section" data-category="quotes">
     <div class="container" style="width: 100%; margin-top: 13%;">
         <div class="slider " style="width: 100% ;">
             <div class="slide " style="width: 100%;">
@@ -794,6 +846,27 @@
         </div>
     </div>
     </div>
+</div>
+
+<div class="container-section" data-category="maps">
+    <div class="google-maps" style="margin-bottom: 20px;">
+        <h2>Lokasi</h2>
+        <p style="color: white;">Universitas Pamulang Kampus 2 (Viktor)</p>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1922.1165888302958!2d106.68999641025819!3d-6.3458599595059315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5a6e26dc3cd%3A0xccd6344b8021119d!2sUniversitas%20Pamulang%20Kampus%202%20(UNPAM%20Viktor)!5e1!3m2!1sid!2sid!4v1736147526038!5m2!1sid!2sid" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>
+
+
+
+    
     <script>
         $(document).ready(function () {
             $('.slider').slick({
@@ -806,6 +879,7 @@
             });
         });
     </script>
+
 
 
     <!-- footer section  -->
@@ -868,6 +942,61 @@
                 });
             }
         })</script>
+
+<script>
+    // Dropdown Filter Logic
+    document.getElementById("categoryFilter").addEventListener("change", function () {
+        const selectedCategory = this.value;
+        const items = document.querySelectorAll("[data-category]");
+
+        items.forEach(item => {
+            if (selectedCategory === "all" || item.getAttribute("data-category") === selectedCategory) {
+                item.style.display = "block"; // Tampilkan elemen
+            } else {
+                item.style.display = "none"; // Sembunyikan elemen
+            }
+        });
+    });
+
+    // Animation on Scroll Logic
+    document.addEventListener("DOMContentLoaded", () => {
+    // Logic untuk animasi scroll dengan IntersectionObserver
+    const items = document.querySelectorAll('.anime');
+    if (items.length > 0) {
+        const intersectionCallback = (entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animatedcard');
+                }
+            }
+        };
+
+        const observer = new IntersectionObserver(intersectionCallback);
+
+        items.forEach(item => observer.observe(item));
+    } else {
+        console.warn("Tidak ada elemen dengan class 'anime' yang ditemukan.");
+    }
+});
+
+document.getElementById("categoryFilter").addEventListener("change", function () {
+    const selectedCategory = this.value;
+    const items = document.querySelectorAll("[data-category]");
+    if (items.length > 0) {
+        items.forEach(item => {
+            if (selectedCategory === "all" || item.getAttribute("data-category") === selectedCategory) {
+                item.style.display = "block"; // Tampilkan elemen
+            } else {
+                item.style.display = "none"; // Sembunyikan elemen
+            }
+        });
+    } else {
+        console.warn("Tidak ada elemen dengan atribut 'data-category' yang ditemukan.");
+    }
+});
+
+
+</script>
 
 </body>
 </body>
